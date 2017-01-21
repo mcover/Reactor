@@ -12,6 +12,7 @@ public class Emitter : MonoBehaviour {
     public bool movable;
     public float waveSpeed;
     public bool source;
+    public float distance = 100;
     public GameObject Wave30;
     public GameObject Wave360;
 
@@ -31,10 +32,12 @@ public class Emitter : MonoBehaviour {
             if (width == 30)
             {
                 GameObject wave = Instantiate(Wave30, transform.position, direction) as GameObject;
+                wave.GetComponent<Wave>().SetProperties(distance, 5, direction, waveSpeed);
             }
             else if (width == 360)
             {
                 GameObject wave = Instantiate(Wave360, transform.position, direction) as GameObject;
+                wave.GetComponent<Wave>().SetProperties(distance, 5, direction, waveSpeed);
             }
             //set up wave properties here
             //play sound
@@ -63,10 +66,12 @@ public class Emitter : MonoBehaviour {
             if (width == 30)
             {
                 GameObject newWave = Instantiate(Wave30, transform.position, direction) as GameObject;
+                newWave.GetComponent<Wave>().SetProperties(distance, 5, direction, waveSpeed);
             }
             else if (width == 360)
             {
                 GameObject newWave = Instantiate(Wave360, transform.position, direction) as GameObject;
+                newWave.GetComponent<Wave>().SetProperties(distance,5,direction,waveSpeed);
             }
         }
         //play sound
