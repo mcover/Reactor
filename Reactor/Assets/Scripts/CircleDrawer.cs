@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Circle drawing adapted from: http://stackoverflow.com/questions/13708395/how-can-i-draw-a-circle-in-unity3d
 public class CircleDrawer : MonoBehaviour {
 	private float thetaScale = 0.01f;        // radians: set lower to add more points
 	private int numPts; //Total number of points in circle
@@ -20,8 +21,10 @@ public class CircleDrawer : MonoBehaviour {
 	public Color color = Color.white;
 	public float collisionThickness = 0.2f;
 
-	// Use this for initialization
-	void Start () {
+    private List<GameObject> collided = new List<GameObject>();
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 
@@ -39,17 +42,27 @@ public class CircleDrawer : MonoBehaviour {
 		lineRenderer.SetColors(color, color);
 	}
 
+    // Reset to allow wave to go out again
+    void ResetWave()
+    {
+        collided.Clear();
+        radiusEnd = 0f;  // initial radius
+    }
+
 	// Update is called once per frame
 	void FixedUpdate() {
 		radiusEnd += radiusStep;
-		if (radiusEnd > radiusStop)
-			return;
+        if (radiusEnd > radiusStop)
+        {
+            lineRenderer.SetVertexCount(0);
+            return;
+        }
 		
 		float radius = radiusEnd;
 
 		Vector3 pos;
 		Vector3? lastPt = null;
-		float theta = thetaStart;
+ 		float theta = thetaStart;
 
 		for (int i = 0; i < numPts; i++) {     
 			float x = radius * Mathf.Cos (theta);
@@ -65,9 +78,13 @@ public class CircleDrawer : MonoBehaviour {
 				Vector3 dir = lastPt.Value - pos;
 
 				RaycastHit[] castHits = Physics.SphereCastAll(pos, collisionThickness, dir.normalized, dir.magnitude);
-			
-				foreach (var hit in castHits)
-					Debug.LogFormat ("{0}", hit.collider.name);
+
+                foreach (var hit in castHits)
+                    if (!collided.Contains(hit.collider.gameObject))
+                    {
+                        Debug.LogFormat("{0}", hit.collider.name);
+                        collided.Add(hit.collider.gameObject);
+                    }
 			}
 
 			lastPt = pos;
