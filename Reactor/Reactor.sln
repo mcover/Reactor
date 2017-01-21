@@ -1,7 +1,7 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactor", "Reactor.csproj", "{E374AAFA-C3F8-89C0-9E80-229F27F79988}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{1436185F-7342-E021-0BE8-6E7E17963250}") = "Reactor", "Assembly-CSharp.csproj", "{25950F2F-2614-0207-D50B-CDF1DB5B1FD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E374AAFA-C3F8-89C0-9E80-229F27F79988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E374AAFA-C3F8-89C0-9E80-229F27F79988}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E374AAFA-C3F8-89C0-9E80-229F27F79988}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E374AAFA-C3F8-89C0-9E80-229F27F79988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25950F2F-2614-0207-D50B-CDF1DB5B1FD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25950F2F-2614-0207-D50B-CDF1DB5B1FD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25950F2F-2614-0207-D50B-CDF1DB5B1FD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25950F2F-2614-0207-D50B-CDF1DB5B1FD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
