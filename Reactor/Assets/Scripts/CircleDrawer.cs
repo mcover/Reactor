@@ -80,11 +80,17 @@ public class CircleDrawer : MonoBehaviour {
 				RaycastHit[] castHits = Physics.SphereCastAll(pos, collisionThickness, dir.normalized, dir.magnitude);
 
                 foreach (var hit in castHits)
+                {
                     if (!collided.Contains(hit.collider.gameObject))
                     {
-                        Debug.LogFormat("{0}", hit.collider.name);
                         collided.Add(hit.collider.gameObject);
+                        var HitMeFunctions = hit.collider.gameObject.GetComponents<IHitMe>();
+                        foreach (var HitMeFunction in HitMeFunctions)
+                        {
+                            HitMeFunction.HitMe();
+                        }
                     }
+                }
 			}
 
 			lastPt = pos;

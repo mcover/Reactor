@@ -21,7 +21,7 @@ public class Wave : MonoBehaviour {
         initialPosition = transform.position;
         scale = transform.localScale;
         timeToMove = waveSpeed * distance;
-        transform.Rotate(direction.eulerAngles);
+        //transform.Rotate(direction.eulerAngles);
         finalPosition = new Vector3(0,0, distance);
         initialTime = Time.time;
         transform.localScale = new Vector3(.5f, .5f,0);
@@ -35,7 +35,7 @@ public class Wave : MonoBehaviour {
         waveSpeed = speed;
         //calculate final position here?
         timeToMove = speed * distance;
-        transform.Rotate(direction.eulerAngles);
+        //transform.localRotation = direction;
         finalPosition = new Vector3(0,0, distance);//will this even work??
         Debug.Log("setting properties");
     }
