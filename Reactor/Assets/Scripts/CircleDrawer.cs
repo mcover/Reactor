@@ -22,10 +22,15 @@ public class CircleDrawer : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        StartCoroutine(updateCircle());
 	}
 
-	void Awake() {
+    // Use this for initialization
+    public void CreateWave()
+    {
+        StartCoroutine(emitWave());
+    }
+
+    void Awake() {
 		thetaStart = 2.0f * Mathf.PI * (arcCenter - arcWidth / 2f) / 360f;  // starting angle in radians
 		radiansWidth = arcWidth / 180f;
 		float sizeValue = (radiansWidth * Mathf.PI) / thetaScale; 
@@ -34,13 +39,17 @@ public class CircleDrawer : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	IEnumerator updateCircle() {
+	IEnumerator emitWave() {
         
         List<GameObject> collided = new List<GameObject>();
         LineRenderer lineRenderer;
         float radiusEnd = 0f;  // initial radius
 
-        lineRenderer = gameObject.AddComponent<LineRenderer>();
+        var waveObject = new GameObject("waveObject");
+        waveObject.transform.parent = transform;
+        waveObject.transform.localPosition = Vector3.zero;
+
+        lineRenderer = waveObject.AddComponent<LineRenderer>();
         lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
         lineRenderer.SetWidth(lineThickness, lineThickness);
         lineRenderer.SetVertexCount(numPts);
@@ -97,6 +106,6 @@ public class CircleDrawer : MonoBehaviour {
 		}
         //After line is no longer expanding, hide it.
         lineRenderer.SetVertexCount(0);
-        Destroy(lineRenderer);
+        Destroy(waveObject);
     }
 }
