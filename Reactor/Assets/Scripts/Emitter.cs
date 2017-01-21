@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Emitter : MonoBehaviour {
-    public int frequency;
-    public float time;
+    public float frequency;
+    private float time;
     public int width;
     public bool activated = false;
     public float direction;
@@ -19,9 +19,11 @@ public class Emitter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (activated) {
-            //check time
-            //if frequency time has passed shoot wave of width in direction
+        float newTime = Time.time;
+		if (activated &((time-newTime) >=frequency)) {
+            //shoot wave (could be wave of distance 0)
+            //play sound
+            time = Time.time;
         }
 	}
 
