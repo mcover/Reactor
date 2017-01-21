@@ -8,7 +8,6 @@ public class CircleDrawer : MonoBehaviour {
 	private float thetaScale = 0.01f;        // radians: set lower to add more points
 	private int numPts; //Total number of points in circle
 	private float radiusEnd;
-	private LineRenderer lineRenderer;
 
 	private float radiansWidth;  // width of arc in radians
 	private float thetaStart;  // starting angle start arc in radians
@@ -21,11 +20,9 @@ public class CircleDrawer : MonoBehaviour {
 	public Color color = Color.white;
 	public float collisionThickness = 0.2f;
 
-    private List<GameObject> collided = new List<GameObject>();
-
     // Use this for initialization
     void Start () {
-		
+        StartCoroutine(updateCircle());
 	}
 
 	void Awake() {
@@ -34,66 +31,72 @@ public class CircleDrawer : MonoBehaviour {
 		float sizeValue = (radiansWidth * Mathf.PI) / thetaScale; 
 		numPts = (int)sizeValue;
 		numPts++;  // one more to complete circle
-		radiusEnd = 0f;  // initial radius
-		lineRenderer = gameObject.AddComponent<LineRenderer>();
-		lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
-		lineRenderer.SetWidth(lineThickness, lineThickness);
-		lineRenderer.SetVertexCount(numPts);
-		lineRenderer.SetColors(color, color);
 	}
 
-    // Reset to allow wave to go out again
-    void ResetWave()
-    {
-        collided.Clear();
-        radiusEnd = 0f;  // initial radius
-    }
-
 	// Update is called once per frame
-	void FixedUpdate() {
-		radiusEnd += radiusStep;
-        if (radiusEnd > radiusStop)
+	IEnumerator updateCircle() {
+        
+        List<GameObject> collided = new List<GameObject>();
+        LineRenderer lineRenderer;
+        float radiusEnd = 0f;  // initial radius
+
+        lineRenderer = gameObject.AddComponent<LineRenderer>();
+        lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+        lineRenderer.SetWidth(lineThickness, lineThickness);
+        lineRenderer.SetVertexCount(numPts);
+        lineRenderer.SetColors(color, color);
+
+        while ((radiusEnd < radiusStop))
         {
-            lineRenderer.SetVertexCount(0);
-            return;
-        }
+
+            radiusEnd += radiusStep;
 		
-		float radius = radiusEnd;
+		    float radius = radiusEnd;
 
-		Vector3 pos;
-		Vector3? lastPt = null;
- 		float theta = thetaStart;
+            Vector3 pos;
+            Vector3? lastPt = null;
+            float theta = thetaStart;
 
-		for (int i = 0; i < numPts; i++) {     
-			float x = radius * Mathf.Cos (theta);
-			float y = radius * Mathf.Sin (theta);          
-			x += gameObject.transform.position.x;
-			y += gameObject.transform.position.y;
-			pos = new Vector3 (x, y, 0);
+            for (int i = 0; i < numPts; i++)
+            {
+                float x = radius * Mathf.Cos(theta);
+                float y = radius * Mathf.Sin(theta);
+                x += gameObject.transform.position.x;
+                y += gameObject.transform.position.y;
+                pos = new Vector3(x, y, 0);
 
-			lineRenderer.SetPosition (i, pos);
-			theta += (radiansWidth * thetaScale);
+                lineRenderer.SetPosition(i, pos);
+                theta += (radiansWidth * thetaScale);
 
-			if (lastPt != null) {
-				Vector3 dir = lastPt.Value - pos;
-
-				RaycastHit[] castHits = Physics.SphereCastAll(pos, collisionThickness, dir.normalized, dir.magnitude);
-
-                foreach (var hit in castHits)
+                if (lastPt != null)
                 {
-                    if (!collided.Contains(hit.collider.gameObject))
+                    Vector3 dir = lastPt.Value - pos;
+
+                    RaycastHit[] castHits = Physics.SphereCastAll(pos, collisionThickness, dir.normalized, dir.magnitude);
+
+                    foreach (var hit in castHits)
                     {
-                        collided.Add(hit.collider.gameObject);
-                        var HitMeFunctions = hit.collider.gameObject.GetComponents<IHitMe>();
-                        foreach (var HitMeFunction in HitMeFunctions)
+                        if (!collided.Contains(hit.collider.gameObject))
                         {
-                            HitMeFunction.HitMe();
+                            collided.Add(hit.collider.gameObject);
+                            var HitMeFunctions = hit.collider.gameObject.GetComponents<IHitMe>();
+                            foreach (var HitMeFunction in HitMeFunctions)
+                            {
+                                HitMeFunction.HitMe();
+                            }
                         }
                     }
                 }
-			}
 
-			lastPt = pos;
+
+
+                lastPt = pos;
+            }
+
+            yield return new WaitForFixedUpdate();
 		}
-	}
+        //After line is no longer expanding, hide it.
+        lineRenderer.SetVertexCount(0);
+        Destroy(lineRenderer);
+    }
 }
