@@ -11,6 +11,7 @@ public class Emitter : MonoBehaviour {
     public AudioSource audioSource;
     public bool movable;
     public float waveSpeed;
+    public bool source;
 
 	// Use this for initialization
 	void Start () {
@@ -31,4 +32,14 @@ public class Emitter : MonoBehaviour {
         //create wave object from prefab of width
         //add movement script with speed and direction
     }
+
+    void OnMouseDown()
+    {
+        if (source)
+        {
+            activated = !activated;
+            print(activated);
+        }
+    }
+    
 }
