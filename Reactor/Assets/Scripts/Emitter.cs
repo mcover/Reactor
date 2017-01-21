@@ -7,11 +7,13 @@ public class Emitter : MonoBehaviour {
     private float time;
     public int width;
     public bool activated = false;
-    public float direction;
+    public Quaternion direction;
     public AudioSource audioSource;
     public bool movable;
     public float waveSpeed;
     public bool source;
+    public GameObject Wave30;
+    public GameObject Wave360;
 
 	// Use this for initialization
 	void Start () {
@@ -21,8 +23,20 @@ public class Emitter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         float newTime = Time.time;
-		if (activated &((time-newTime) >=frequency)) {
+        print(source & activated & ((newTime - time) >= frequency));
+		if (source & activated & ((newTime - time) >=frequency)) {
             //shoot wave (could be wave of distance 0)
+            print("making wave");
+            //need offset
+            if (width == 30)
+            {
+                GameObject wave = Instantiate(Wave30, transform.position, direction) as GameObject;
+            }
+            else if (width == 360)
+            {
+                GameObject wave = Instantiate(Wave360, transform.position, direction) as GameObject;
+            }
+            //set up wave properties here
             //play sound
             time = Time.time;
         }
@@ -38,8 +52,24 @@ public class Emitter : MonoBehaviour {
         if (source)
         {
             activated = !activated;
-            print(activated);
         }
     }
-    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!source)
+        {
+            //need an offset
+            //send a wave
+            if (width == 30)
+            {
+                GameObject newWave = Instantiate(Wave30, transform.position, direction) as GameObject;
+            }
+            else if (width == 360)
+            {
+                GameObject newWave = Instantiate(Wave360, transform.position, direction) as GameObject;
+            }
+        }
+        //play sound
+    }
+
 }
