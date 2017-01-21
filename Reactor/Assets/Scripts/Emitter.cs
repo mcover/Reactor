@@ -24,31 +24,26 @@ public class Emitter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         float newTime = Time.time;
-        print(source & activated & ((newTime - time) >= frequency));
+        //print(source & activated & ((newTime - time) >= frequency));
 		if (source & activated & ((newTime - time) >=frequency)) {
             //shoot wave (could be wave of distance 0)
-            print("making wave");
+           // print("making wave");
             //need offset
-            if (width == 30)
-            {
-                GameObject wave = Instantiate(Wave30, transform.position, direction) as GameObject;
-                wave.GetComponent<Wave>().SetProperties(distance, 5, direction, waveSpeed);
-            }
-            else if (width == 360)
-            {
-                GameObject wave = Instantiate(Wave360, transform.position, direction) as GameObject;
-                wave.GetComponent<Wave>().SetProperties(distance, 5, direction, waveSpeed);
-            }
+           // if (width == 30)
+            //{
+              //  GameObject wave = Instantiate(Wave30, transform.position, direction) as GameObject;
+               // wave.GetComponent<Wave>().SetProperties(distance, 5, direction, waveSpeed);
+            //}
+            //else if (width == 360)
+            //{
+             //   GameObject wave = Instantiate(Wave360, transform.position, direction) as GameObject;
+              //  wave.GetComponent<Wave>().SetProperties(distance, 5, direction, waveSpeed);
+           // }
             //set up wave properties here
             //play sound
-            time = Time.time;
+          //  time = Time.time;
         }
 	}
-
-    void sendWave(){
-        //create wave object from prefab of width
-        //add movement script with speed and direction
-    }
 
     void OnMouseDown()
     {
@@ -63,16 +58,16 @@ public class Emitter : MonoBehaviour {
         {
             //need an offset
             //send a wave
-            if (width == 30)
-            {
-                GameObject newWave = Instantiate(Wave30, transform.position, direction) as GameObject;
-                newWave.GetComponent<Wave>().SetProperties(distance, 5, direction, waveSpeed);
-            }
-            else if (width == 360)
-            {
-                GameObject newWave = Instantiate(Wave360, transform.position, direction) as GameObject;
-                newWave.GetComponent<Wave>().SetProperties(distance,5,direction,waveSpeed);
-            }
+           // if (width == 30)
+            //{
+             //   GameObject newWave = Instantiate(Wave30, transform.position, direction) as GameObject;
+              //  newWave.GetComponent<Wave>().SetProperties(distance, 5, direction, waveSpeed);
+           // }
+           // else if (width == 360)
+            //{
+             //   GameObject newWave = Instantiate(Wave360, transform.position, direction) as GameObject;
+              //  newWave.GetComponent<Wave>().SetProperties(distance,5,direction,waveSpeed);
+           // }
         }
         //play sound
     }
