@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Source : Emitter
 {
-    public bool     activated = false;
+    public bool  activated = false;
     public float frequency = 1;
 
     Light lightComp;
@@ -19,7 +19,7 @@ public class Source : Emitter
         lightComp.enabled = true;
         lightComp.intensity = 8;
         StartCoroutine(pulse());
-        Debug.LogFormat("Screen Dimensions: {0},{1}", Screen.width, Screen.height);
+        //Debug.LogFormat("Screen Dimensions: {0},{1}", Screen.width, Screen.height);
     }
 
     void updateLight() {
@@ -69,15 +69,7 @@ public class Source : Emitter
 
     void OnMouseDown()
     {
-        Debug.Log("clicked");
+        //Debug.Log("clicked");
         activated = !activated;
     }
-
-    //void OnMouseOver()
-    //{
-    //    Debug.LogFormat("Mouse Over: {0}", name);
-    //    Debug.LogFormat("Mouse Button 1: {0}", Input.GetMouseButtonDown(0));
-    //    Debug.LogFormat("Mouse Button 2: {0}", Input.GetMouseButtonDown(1));
-    //    Debug.LogFormat("Mouse Button 3: {0}", Input.GetMouseButtonDown(2));
-    //}
 }

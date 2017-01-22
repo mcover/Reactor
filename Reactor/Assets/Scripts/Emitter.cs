@@ -45,7 +45,7 @@ public class Emitter : MonoBehaviour, IHitMe {
             hits.Add(hitter);
             if (hits.Count >= goalHits)
             {
-                Debug.LogFormat("Objects {0} hit by {1} objects", name, hits.Count);
+                //Debug.LogFormat("Objects {0} hit by {1} objects", name, hits.Count);
                 //Destroy(gameObject);
             }
         }
@@ -68,6 +68,6 @@ public class Emitter : MonoBehaviour, IHitMe {
 
     void OnDestroy()
     {
-        Debug.LogFormat("Destroying {0}",name);
+        //Debug.LogFormat("Destroying {0}",name);
     }
 }

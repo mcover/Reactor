@@ -49,8 +49,8 @@ public class Wave : MonoBehaviour {
             //interpolate distance lerp
             //need final position
             //interpolate scale
-            print("getting into code");
-            Debug.LogFormat("finalPosition {0}  position {1} ", finalPosition, newPosition);
+            //print("getting into code");
+            //Debug.LogFormat("finalPosition {0}  position {1} ", finalPosition, newPosition);
             //print("position " + position);
             transform.position = Vector3.MoveTowards(newPosition, finalPosition, 10);
             //transform.localScale = new Vector3(scale.x * scaleFactor, scale.y * scaleFactor, 0);
