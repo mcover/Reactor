@@ -13,7 +13,7 @@ public class Emitter : MonoBehaviour, IHitMe {
     private List<GameObject> hits = new List<GameObject>();
    
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
         float newTime = Time.time;
         //print(source & activated & ((newTime - time) >= frequency));
 		//if (source) {//need to check time vs frequency as well
