@@ -8,7 +8,8 @@ public class NewEmitterSpawner : MonoBehaviour {
 	
     public void SpawnNewEmitter()
     {
-        GameObject newPiece = Instantiate(emitterPrefab, spawnPosition.position, Quaternion.identity) as GameObject;
-        Debug.Log("Being called");
+        float posHeight = Random.Range(-4, 4);
+        float posWidth = Random.Range(-5, 5); 
+        GameObject newPiece = Instantiate(emitterPrefab, new Vector3(posWidth, posHeight,0), Quaternion.identity) as GameObject;
     }
 }
