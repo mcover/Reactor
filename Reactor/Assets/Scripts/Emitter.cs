@@ -10,7 +10,7 @@ public class Emitter : MonoBehaviour, IHitMe {
     public float time;
    
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
         float newTime = Time.time;
         //print(source & activated & ((newTime - time) >= frequency));
 		//if (source) {//need to check time vs frequency as well
