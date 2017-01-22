@@ -1,0 +1,30 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 960M (ID=0x139b)
+    Vendor:   NVIDIA
+    VRAM:     2018 MB
+    Driver:   20.19.15.4474
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  0.234 seconds
+Platform assembly: C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\mcove\Documents\GitHub\Reactor\Resonance_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 3.429925 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 15e8 -> priority: 1 
+  Thread -> id: 29b0 -> priority: 1 

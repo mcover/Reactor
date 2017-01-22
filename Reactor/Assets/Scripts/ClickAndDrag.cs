@@ -7,6 +7,7 @@ public class ClickAndDrag : MonoBehaviour {
     private Vector2 offset;
     private Vector2 previousCursorPosition;
     private bool    isRotating;
+    public float destroyOffset = 5;
 
     // Update is called once per frame
     void OnMouseDown () {
@@ -25,8 +26,8 @@ public class ClickAndDrag : MonoBehaviour {
         //Debug.LogFormat("Position on release: {0},{1}", Input.mousePosition.x, Input.mousePosition.y);
         if (Input.mousePosition.x < 0
             || Input.mousePosition.y < 0
-            || Input.mousePosition.x > Screen.width
-            || Input.mousePosition.y > Screen.height)
+            || Input.mousePosition.x > Screen.width-destroyOffset
+            || Input.mousePosition.y > Screen.height-destroyOffset)
         {
             Destroy(gameObject);
         }
