@@ -18,8 +18,8 @@ public class Source : Emitter
 
             if (activated)
             {
+                PlaySound();
                 var wave = GetComponent<CircleDrawer>();
-
                 wave.CreateWave();
             }
             if (frequency == 0)
@@ -31,6 +31,19 @@ public class Source : Emitter
                 yield return new WaitForSeconds(frequency);
             }
         }
+    }
+
+    public override void HitMe()
+    {
+        //play sound
+        //PlaySound();
+    }
+
+    void PlaySound()
+    {
+        //play sound
+        //activate circle script in a corroutine
+        audioSource.Play();
     }
 
     void OnMouseDown()

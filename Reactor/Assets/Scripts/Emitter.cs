@@ -33,7 +33,7 @@ public class Emitter : MonoBehaviour, IHitMe {
        // }
 	}
 
-    public void HitMe()
+    public virtual void HitMe()
     {
         //play sound
         PlaySound();
@@ -44,9 +44,9 @@ public class Emitter : MonoBehaviour, IHitMe {
     {
         //play sound
         //activate circle script in a corroutine
-        Debug.LogFormat("hit {0}", this.name);
+        //Debug.LogFormat("hit {0}", this.name);
+        audioSource.Play();
     }
-
 
     void EmitWave()
     {
