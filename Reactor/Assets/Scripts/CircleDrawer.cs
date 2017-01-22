@@ -32,8 +32,8 @@ public class CircleDrawer : MonoBehaviour {
 
     void Awake() {
 		thetaStart = 2.0f * Mathf.PI * (arcCenter - arcWidth / 2f) / 360f;  // starting angle in radians
-		radiansWidth = arcWidth / 180f;
-		float sizeValue = (radiansWidth * Mathf.PI) / thetaScale; 
+		radiansWidth = Mathf.PI * arcWidth / 180f;
+		float sizeValue = radiansWidth / thetaScale; 
 		numPts = (int)sizeValue;
 		numPts++;  // one more to complete circle
 	}
@@ -75,7 +75,7 @@ public class CircleDrawer : MonoBehaviour {
                 pos = new Vector3(x, y, 0);
 
                 lineRenderer.SetPosition(i, pos);
-                theta += (radiansWidth * thetaScale);
+                theta += thetaScale; //(radiansWidth * thetaScale);
 
                 if (lastPt != null)
                 {
