@@ -18,7 +18,7 @@ public class Source : Emitter
         lightComp = lightGameObject.AddComponent<Light>();
         lightComp.enabled = true;
         lightComp.intensity = 8;
-        StartCoroutine(pulse());
+        //StartCoroutine(pulse());
         //Debug.LogFormat("Screen Dimensions: {0},{1}", Screen.width, Screen.height);
     }
 
@@ -27,18 +27,21 @@ public class Source : Emitter
         lightGameObject.transform.localPosition = new Vector3(0.0f, 0.0f, -1f);
     }
 
-    IEnumerator pulse()
+    IEnumerator Pulse()
     {
         while (true)
         {
 
             if (activated)
             {
-                PlaySound();
+                //PlaySound();
                 var wave = GetComponent<CircleDrawer>();
-                wave.CreateWave();
+                if (wave.CreateWave())
+                {
+                    PlaySound();
+                }
             }
-            if (frequency == 0)
+            if (frequency == 0 || !activated)
             {
                 yield return null;
             }
@@ -75,5 +78,9 @@ public class Source : Emitter
     {
         //Debug.Log("clicked");
         activated = !activated;
+        if (activated)
+        {
+            StartCoroutine(Pulse());
+        }
     }
 }

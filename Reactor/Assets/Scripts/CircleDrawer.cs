@@ -22,20 +22,19 @@ public class CircleDrawer : MonoBehaviour {
 	public Color color = Color.white;
 	public float collisionThickness = 0.2f;
 
-    public int maxWaves = 1;
+    public int maxWaves = 3;
 
     
     // Use this for initialization
-    public void CreateWave()
+    public bool CreateWave()
     {
-
         if (numWaves >= maxWaves) {
-            Debug.LogFormat("Too many waves");
-            return;
+            //Debug.LogFormat("Too many waves");
+            return false;
 
         }
         StartCoroutine(emitWave());
-        
+        return true;
     }
 
     void Start() {
@@ -56,7 +55,7 @@ public class CircleDrawer : MonoBehaviour {
         numPts++;  // one more to complete circle
 
         numWaves++;
-        Debug.LogFormat("Create new wave {0}", numWaves);
+        //Debug.LogFormat("Create new wave {0}", numWaves);
 
         List<GameObject> collided = new List<GameObject>();
         LineRenderer lineRenderer;
@@ -123,7 +122,7 @@ public class CircleDrawer : MonoBehaviour {
             yield return new WaitForFixedUpdate();
 		}
         numWaves--;
-        Debug.LogFormat("Destroy wave {0}", numWaves);
+        //Debug.LogFormat("Destroy wave {0}", numWaves);
         //After line is no longer expanding, hide it.
         lineRenderer.SetVertexCount(0);
         Destroy(waveObject);

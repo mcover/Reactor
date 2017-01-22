@@ -49,6 +49,7 @@ public class Emitter : MonoBehaviour, IHitMe {
                 //Destroy(gameObject);
             }
         }
+        //Debug.LogFormat("EmitWave");
         EmitWave();
     }
 
@@ -63,7 +64,11 @@ public class Emitter : MonoBehaviour, IHitMe {
     void EmitWave()
     {
         var wave = GetComponent<CircleDrawer>();
-        wave.CreateWave();
+        if (wave.CreateWave())
+        {
+            PlaySound();
+        }
+        
     }
 
     void OnDestroy()
