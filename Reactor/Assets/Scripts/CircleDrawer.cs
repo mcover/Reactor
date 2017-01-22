@@ -10,6 +10,7 @@ public class CircleDrawer : MonoBehaviour {
 	private float radiusEnd;
     private int numWaves = 0;
 
+    public Material lineMaterial;
 	private float radiansWidth;  // width of arc in radians
 	private float thetaStart;  // starting angle start arc in radians
 
@@ -66,7 +67,7 @@ public class CircleDrawer : MonoBehaviour {
         waveObject.transform.localPosition = Vector3.zero;
 
         lineRenderer = waveObject.AddComponent<LineRenderer>();
-        lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
+        lineRenderer.material = lineMaterial;
         lineRenderer.SetWidth(lineThickness, lineThickness);
         lineRenderer.SetVertexCount(numPts);
         lineRenderer.SetColors(color, color);
