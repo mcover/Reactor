@@ -9,7 +9,8 @@ public class NewEmitterSpawner : MonoBehaviour {
     public void SpawnNewEmitter()
     {
         float posHeight = Random.Range(-4, 4);
-        float posWidth = Random.Range(-5, 5); 
-        GameObject newPiece = Instantiate(emitterPrefab, new Vector3(posWidth, posHeight,0), Quaternion.identity) as GameObject;
+        float posWidth = Random.Range(-5, 5);
+        Quaternion rotation = Quaternion.EulerAngles(0, 0, Random.Range(0, 360));
+        GameObject newPiece = Instantiate(emitterPrefab, new Vector3(posWidth, posHeight,0), rotation) as GameObject;
     }
 }
