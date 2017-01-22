@@ -15,4 +15,18 @@ public class ClickAndDrag : MonoBehaviour {
         Vector2 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);
         transform.position = curPosition+ offset;
     }
+
+    void OnMouseUp()
+    {
+        //Destroy objects if cursor is released off screen
+        //Not sure if this works if we move the camera?
+        //Debug.LogFormat("Position on release: {0},{1}", Input.mousePosition.x, Input.mousePosition.y);
+        if (Input.mousePosition.x < 0
+            || Input.mousePosition.y < 0
+            || Input.mousePosition.x > Screen.width
+            || Input.mousePosition.y > Screen.height)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

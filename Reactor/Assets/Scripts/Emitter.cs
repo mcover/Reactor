@@ -53,4 +53,9 @@ public class Emitter : MonoBehaviour, IHitMe {
         var wave = GetComponent<CircleDrawer>();
         wave.CreateWave();
     }
+
+    void OnDestroy()
+    {
+        Debug.LogFormat("Destroying {0}",name);
+    }
 }

@@ -10,6 +10,7 @@ public class Source : Emitter
     void Start()
     {
         StartCoroutine(pulse());
+        Debug.LogFormat("Screen Dimensions: {0},{1}", Screen.width, Screen.height);
     }
 
     IEnumerator pulse()
@@ -52,4 +53,11 @@ public class Source : Emitter
         activated = !activated;
     }
 
+    //void OnMouseOver()
+    //{
+    //    Debug.LogFormat("Mouse Over: {0}", name);
+    //    Debug.LogFormat("Mouse Button 1: {0}", Input.GetMouseButtonDown(0));
+    //    Debug.LogFormat("Mouse Button 2: {0}", Input.GetMouseButtonDown(1));
+    //    Debug.LogFormat("Mouse Button 3: {0}", Input.GetMouseButtonDown(2));
+    //}
 }
