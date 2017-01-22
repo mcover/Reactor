@@ -80,7 +80,10 @@ public class ClickAndDrag : MonoBehaviour {
             //Debug.LogFormat("previousCursorPosition = : {0}", previousCursorPosition);
             //Debug.LogFormat("curScreenPoint = : {0}", curScreenPoint);
             //Debug.LogFormat("Rotating, offset, rotation = : {0}", differenceCursorPosition);
-            transform.rotation *= Quaternion.AngleAxis(differenceCursorPosition.x + differenceCursorPosition.y, new Vector3(0,0,1));
+            float angleToRotate = differenceCursorPosition.x + differenceCursorPosition.y;
+            Debug.LogFormat("Rotating, angle = : {0}", angleToRotate);
+            transform.rotation *= Quaternion.AngleAxis(angleToRotate, new Vector3(0,0,1));
+            GetComponent<CircleDrawer>().arcCenter += angleToRotate;
         }
 
         //Debug.LogFormat("old = : {0}", previousCursorPosition);

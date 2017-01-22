@@ -38,15 +38,22 @@ public class CircleDrawer : MonoBehaviour {
     }
 
     void Start() {
-		thetaStart = 2.0f * Mathf.PI * (arcCenter - arcWidth / 2f) / 360f;  // starting angle in radians
-		radiansWidth = Mathf.PI * arcWidth / 180f;
-		float sizeValue = radiansWidth / thetaScale; 
-		numPts = (int)sizeValue;
-		numPts++;  // one more to complete circle
+		//moved to Update
+        //thetaStart = 2.0f * Mathf.PI * (arcCenter - arcWidth / 2f) / 360f;  // starting angle in radians
+		//radiansWidth = Mathf.PI * arcWidth / 180f;
+		//float sizeValue = radiansWidth / thetaScale; 
+		//numPts = (int)sizeValue;
+		//numPts++;  // one more to complete circle
     }
 
 	// Update is called once per frame
 	IEnumerator emitWave() {
+        thetaStart = 2.0f * Mathf.PI * (arcCenter - arcWidth / 2f) / 360f;  // starting angle in radians
+        radiansWidth = Mathf.PI * arcWidth / 180f;
+        float sizeValue = radiansWidth / thetaScale;
+        numPts = (int)sizeValue;
+        numPts++;  // one more to complete circle
+
         numWaves++;
         Debug.LogFormat("Create new wave {0}", numWaves);
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Source : Emitter
 {
-    public bool  activated = false;
+    public bool activated = false;
     public float frequency = 1;
 
     Light lightComp;
@@ -22,13 +22,15 @@ public class Source : Emitter
         //Debug.LogFormat("Screen Dimensions: {0},{1}", Screen.width, Screen.height);
     }
 
-    void updateLight() {
-        lightGameObject.transform.localPosition = new Vector3(0.0f,0.0f,-1f);
+    void updateLight()
+    {
+        lightGameObject.transform.localPosition = new Vector3(0.0f, 0.0f, -1f);
     }
 
     IEnumerator pulse()
     {
-        while (true) {
+        while (true)
+        {
 
             if (activated)
             {
@@ -47,9 +49,10 @@ public class Source : Emitter
         }
     }
 
-    public override void Update() {
+    public override void Update()
+    {
         base.Update();
-        
+
         lightComp.enabled = activated;
     }
 
@@ -67,6 +70,7 @@ public class Source : Emitter
         audioSource.Play();
     }
 
+    //Left click
     void OnMouseDown()
     {
         //Debug.Log("clicked");
