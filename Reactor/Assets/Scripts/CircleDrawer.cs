@@ -8,6 +8,7 @@ public class CircleDrawer : MonoBehaviour {
 	private float thetaScale = 0.01f;        // radians: set lower to add more points
 	private int numPts; //Total number of points in circle
 	private float radiusEnd;
+    private int numWaves = 0;
 
 	private float radiansWidth;  // width of arc in radians
 	private float thetaStart;  // starting angle start arc in radians
@@ -20,6 +21,8 @@ public class CircleDrawer : MonoBehaviour {
 	public Color color = Color.white;
 	public float collisionThickness = 0.2f;
 
+    public int maxWaves = 1;
+
     // Use this for initialization
     void Start () {
 	}
@@ -27,7 +30,14 @@ public class CircleDrawer : MonoBehaviour {
     // Use this for initialization
     public void CreateWave()
     {
+
+        if (numWaves >= maxWaves) {
+            Debug.LogFormat("Too many waves");
+            return;
+
+        }
         StartCoroutine(emitWave());
+        
     }
 
     void Awake() {
@@ -40,7 +50,9 @@ public class CircleDrawer : MonoBehaviour {
 
 	// Update is called once per frame
 	IEnumerator emitWave() {
-        
+        numWaves++;
+        Debug.LogFormat("Create new wave {0}", numWaves);
+
         List<GameObject> collided = new List<GameObject>();
         LineRenderer lineRenderer;
         float radiusEnd = 0f;  // initial radius
@@ -54,7 +66,6 @@ public class CircleDrawer : MonoBehaviour {
         lineRenderer.SetWidth(lineThickness, lineThickness);
         lineRenderer.SetVertexCount(numPts);
         lineRenderer.SetColors(color, color);
-
         while ((radiusEnd < radiusStop))
         {
 
@@ -106,8 +117,11 @@ public class CircleDrawer : MonoBehaviour {
 
             yield return new WaitForFixedUpdate();
 		}
+        numWaves--;
+        Debug.LogFormat("Destroy wave {0}", numWaves);
         //After line is no longer expanding, hide it.
         lineRenderer.SetVertexCount(0);
         Destroy(waveObject);
+
     }
 }
