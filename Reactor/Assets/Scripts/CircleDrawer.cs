@@ -20,9 +20,6 @@ public class CircleDrawer : MonoBehaviour {
 	public Color color = Color.white;
 	public float collisionThickness = 0.2f;
 
-    // Use this for initialization
-    void Start () {
-	}
 
     // Use this for initialization
     public void CreateWave()
@@ -30,13 +27,13 @@ public class CircleDrawer : MonoBehaviour {
         StartCoroutine(emitWave());
     }
 
-    void Awake() {
+    void Start() {
 		thetaStart = 2.0f * Mathf.PI * (arcCenter - arcWidth / 2f) / 360f;  // starting angle in radians
 		radiansWidth = Mathf.PI * arcWidth / 180f;
 		float sizeValue = radiansWidth / thetaScale; 
 		numPts = (int)sizeValue;
 		numPts++;  // one more to complete circle
-	}
+    }
 
 	// Update is called once per frame
 	IEnumerator emitWave() {
