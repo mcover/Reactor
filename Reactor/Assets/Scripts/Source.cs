@@ -7,10 +7,23 @@ public class Source : Emitter
     public bool     activated = false;
     public float frequency = 1;
 
+    Light lightComp;
+    GameObject lightGameObject;
+
     void Start()
     {
+        lightGameObject = new GameObject("Source Light");
+        lightGameObject.transform.parent = transform;
+        updateLight();
+        lightComp = lightGameObject.AddComponent<Light>();
+        lightComp.enabled = true;
+        lightComp.intensity = 8;
         StartCoroutine(pulse());
         Debug.LogFormat("Screen Dimensions: {0},{1}", Screen.width, Screen.height);
+    }
+
+    void updateLight() {
+        lightGameObject.transform.localPosition = new Vector3(0.0f,0.0f,-1f);
     }
 
     IEnumerator pulse()
@@ -33,6 +46,13 @@ public class Source : Emitter
             }
         }
     }
+
+    public override void Update() {
+        base.Update();
+        
+        lightComp.enabled = activated;
+    }
+
 
     public override void HitMe(GameObject hitter)
     {
