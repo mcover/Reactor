@@ -8,6 +8,9 @@ public class Emitter : MonoBehaviour, IHitMe {
     public AudioSource audioSource;
     public bool movable;
     public float time;
+
+    public int goalHits = 3;
+    private List<GameObject> hits = new List<GameObject>();
    
 	// Update is called once per frame
 	void Update () {
@@ -33,10 +36,19 @@ public class Emitter : MonoBehaviour, IHitMe {
        // }
 	}
 
-    public virtual void HitMe()
+    public virtual void HitMe(GameObject hitter)
     {
         //play sound
         PlaySound();
+        if (!hits.Contains(hitter))
+        {
+            hits.Add(hitter);
+            if (hits.Count >= goalHits)
+            {
+                Debug.LogFormat("Objects {0} hit by {1} objects", name, hits.Count);
+                //Destroy(gameObject);
+            }
+        }
         EmitWave();
     }
 

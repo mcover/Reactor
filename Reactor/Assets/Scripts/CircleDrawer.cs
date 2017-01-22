@@ -93,7 +93,7 @@ public class CircleDrawer : MonoBehaviour {
                             foreach (var HitMeFunction in HitMeFunctions)
                             {
                                 //Debug.LogFormat("hit {0}", hit.collider.name);
-                                HitMeFunction.HitMe();
+                                HitMeFunction.HitMe(gameObject);
                             }
                         }
                     }

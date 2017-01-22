@@ -14,7 +14,7 @@ public class HitMeTest : MonoBehaviour, IHitMe {
 		
 	}
 
-    public void HitMe ()
+    public void HitMe (GameObject hitter)
     {
     }
 }

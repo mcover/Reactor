@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IHitMe {
 
-    void HitMe();
+    void HitMe(GameObject hitter);
 }

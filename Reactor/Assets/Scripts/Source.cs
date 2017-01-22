@@ -34,7 +34,7 @@ public class Source : Emitter
         }
     }
 
-    public override void HitMe()
+    public override void HitMe(GameObject hitter)
     {
         //play sound
         //PlaySound();
