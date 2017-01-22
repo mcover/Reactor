@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(CircleDrawer))]
 
-public class Emitter : MonoBehaviour {
+public class Emitter : MonoBehaviour, IHitMe {
    
     public AudioSource audioSource;
     public bool movable;
@@ -33,9 +33,24 @@ public class Emitter : MonoBehaviour {
        // }
 	}
 
-    public void TriggerEmitter()
+    public virtual void HitMe()
+    {
+        //play sound
+        PlaySound();
+        EmitWave();
+    }
+
+    void PlaySound()
     {
         //play sound
         //activate circle script in a corroutine
+        //Debug.LogFormat("hit {0}", this.name);
+        audioSource.Play();
+    }
+
+    void EmitWave()
+    {
+        var wave = GetComponent<CircleDrawer>();
+        wave.CreateWave();
     }
 }

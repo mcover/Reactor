@@ -85,12 +85,14 @@ public class CircleDrawer : MonoBehaviour {
 
                     foreach (var hit in castHits)
                     {
-                        if (!collided.Contains(hit.collider.gameObject))
+                        //If the object hasn't already been hit and is not the originating object
+                        if (!collided.Contains(hit.collider.gameObject) && hit.collider.gameObject != gameObject)
                         {
                             collided.Add(hit.collider.gameObject);
                             var HitMeFunctions = hit.collider.gameObject.GetComponents<IHitMe>();
                             foreach (var HitMeFunction in HitMeFunctions)
                             {
+                                //Debug.LogFormat("hit {0}", hit.collider.name);
                                 HitMeFunction.HitMe();
                             }
                         }
