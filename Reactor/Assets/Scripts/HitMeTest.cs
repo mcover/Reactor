@@ -16,6 +16,5 @@ public class HitMeTest : MonoBehaviour, IHitMe {
 
     public void HitMe ()
     {
-        Debug.LogFormat("hit {0}", this.name);
     }
 }
