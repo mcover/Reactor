@@ -67,9 +67,14 @@ public class CircleDrawer : MonoBehaviour {
 
         lineRenderer = waveObject.AddComponent<LineRenderer>();
         lineRenderer.material = lineMaterial;
-        lineRenderer.SetWidth(lineThickness, lineThickness);
-        lineRenderer.SetVertexCount(numPts);
-        lineRenderer.SetColors(color, color);
+        //lineRenderer.SetWidth(lineThickness, lineThickness);
+        lineRenderer.startWidth = lineThickness;
+        lineRenderer.endWidth = lineThickness;
+        //lineRenderer.SetVertexCount(numPts);
+        lineRenderer.numPositions = numPts;
+        //lineRenderer.SetColors(color, color);
+        lineRenderer.startColor = color;
+        lineRenderer.endColor = color;
         while ((radiusEnd < radiusStop))
         {
 
@@ -124,7 +129,8 @@ public class CircleDrawer : MonoBehaviour {
         numWaves--;
         //Debug.LogFormat("Destroy wave {0}", numWaves);
         //After line is no longer expanding, hide it.
-        lineRenderer.SetVertexCount(0);
+        //lineRenderer.SetVertexCount(0);
+        lineRenderer.numPositions = 0;
         Destroy(waveObject);
 
     }
