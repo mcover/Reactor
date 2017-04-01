@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GoalTarget : MonoBehaviour, IHitMe {
-    public GameController gameController; //should grab reference to this instead of dragging in
-    public GameObject goalCheck;
 
+    public GameObject goalCheck;
+    private GameController gameController;
     private void Start()
     {
         goalCheck.SetActive(false);
         Debug.Log("script active");
+        gameController = ToolBox.GetTool<GameController>();
     } 
 
     public virtual void HitMe(GameObject hitter)
