@@ -112,7 +112,7 @@ public class CircleDrawer : MonoBehaviour {
                             var HitMeFunctions = hit.collider.gameObject.GetComponents<IHitMe>();
                             foreach (var HitMeFunction in HitMeFunctions)
                             {
-                                //Debug.LogFormat("hit {0}", hit.collider.name);
+                                Debug.LogFormat("hit {0}", hit.collider.name);
                                 HitMeFunction.HitMe(gameObject);
                             }
                         }
