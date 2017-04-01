@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StartUIManager : MonoBehaviour {
 
-	public void LoadFreePlayScene()
+    public void LoadFreePlayScene()
     {
         SceneManager.LoadScene("main");
     }

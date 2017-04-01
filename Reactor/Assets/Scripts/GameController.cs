@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    private void Awake()
+    {
+        ToolBox.RegisterAsTool(this);
+    }
+
+    private void OnDestroy()
+    {
+        ToolBox.UnregisterTool(this);
+    }
+
     public string goalType;
     public int goalNum;
 
@@ -28,6 +38,6 @@ public class GameController : MonoBehaviour {
         return false;
     }
 
-    //need to set up action listeners for updating the goal values
+    //need to set up action listeners for updating the goal values for both goal types
 
 }

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Awake()
+    {
+        ToolBox.RegisterAsTool(this);
+    }
+
+    private void OnDestroy()
+    {
+        ToolBox.UnregisterTool(this);
+    }
+
 }

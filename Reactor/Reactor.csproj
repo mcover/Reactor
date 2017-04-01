@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\NewEmitterSpawner.cs" />
     <Compile Include="Assets\Scripts\Source.cs" />
     <Compile Include="Assets\Scripts\StartUIManager.cs" />
+    <Compile Include="Assets\Scripts\ToolBox.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

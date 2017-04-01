@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public static class Toolbox
+public static class ToolBox
 {
     private static Dictionary<Type, object> _tools = new Dictionary<Type, object>();
 

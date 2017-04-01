@@ -5,8 +5,18 @@ using UnityEngine;
 public class UIManager : MonoBehaviour {
 
     public GameObject creditPanel;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    private void Awake()
+    {
+        ToolBox.RegisterAsTool(this);
+    }
+
+    private void OnDestroy()
+    {
+        ToolBox.UnregisterTool(this);
+    }
+
+    void Start () {
         creditPanel.SetActive(false);
 	}
 
